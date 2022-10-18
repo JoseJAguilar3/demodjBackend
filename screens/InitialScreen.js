@@ -2,26 +2,15 @@ import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react
 import React from 'react'
 import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 
 const image = require("./images/musicbg.jpg");
 
 
-const IntialScreen = () => {
 
-    const navigation=useNavigation()
-    
-      const moveToLogIn = () => 
-      {
-        auth
-            .signOut()
-            .then(() => 
-            {
-                navigation.replace("Login")
-            })
-            .catch(error => alert(error.message))
-      }
-    
+    function InitialScreen ({navigation}){
       return (
         
         <View style={styles.container}>
@@ -29,14 +18,14 @@ const IntialScreen = () => {
       
         <View style={styles.intialScreenContainer}>
         <TouchableOpacity 
-            onPress={moveToLogIn}
+            onPress={() => navigation.navigate("Login")}
             style={styles.hostButton}
         >
             <Text style={styles.hostButtonText}>Host</Text>
         </TouchableOpacity>
         <TouchableOpacity 
-            onPress={moveToLogIn}
-            style={[styles.guestButton, styles.guestButtonTwo]}
+             onPress={() => navigation.navigate("Login")}
+            style={styles.guestButton}
         >
             <Text style={styles.guestButtonText}>Guest</Text>
         </TouchableOpacity>
@@ -47,9 +36,7 @@ const IntialScreen = () => {
     }
 
 
-    export default IntialScreen
-
-
+    export default InitialScreen
 
     const styles = StyleSheet.create({
 
@@ -88,7 +75,7 @@ const IntialScreen = () => {
             fontSize: 16,
     
         },
-        guestButtonTwo:
+        guestButton:
         {
             backgroundColor:'#e54ed0',
             width:'60%',
