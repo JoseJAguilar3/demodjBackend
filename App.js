@@ -6,15 +6,13 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import IntialScreen from './screens/InitialScreen';
 
-
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen options={{headerShown: false}} name="Intial" component={IntialScreen} />
+      <Stack.Navigator initialRouteName="Initial">
+        <Stack.Screen options={{headerShown: false}} name="Initial" component={IntialScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
@@ -30,3 +28,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
